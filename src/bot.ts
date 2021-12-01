@@ -24,6 +24,7 @@ bot.command('start', ctx =>
 bot.on('message', ctx =>
   ctx.reply('Я не знаю, что ответить на такое сообщение.')
 )
+
 /* #region  START BOT */
 bot.start()
 /* #endregion */
