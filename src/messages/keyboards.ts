@@ -1,4 +1,5 @@
 import { Keyboard } from 'grammy'
+import { BotContext } from '../models/Context'
 
 import {
   mainActions,
@@ -11,39 +12,96 @@ import {
   termsOfReferenceActions
 } from './actions'
 
-export const mainKeyboard = new Keyboard()
-  .text(mainActions.CREATE_ORDER)
-  .text(mainActions.MY_ORDERS)
-  .row()
-  .text(mainActions.RULES)
-  .text(mainActions.HELP)
+export const mainKeyboard = (ctx: BotContext) =>
+  ctx.reply(mainActions.MESSAGE, {
+    reply_markup: {
+      resize_keyboard: true,
+      one_time_keyboard: true,
+      keyboard: new Keyboard()
+        .add(mainActions.CREATE_ORDER, mainActions.MY_ORDERS)
+        .row()
+        .add(mainActions.RULES, mainActions.HELP)
+        .build()
+    }
+  })
 
-export const durationKeyboard = new Keyboard()
-  .text(durationActions.DURATION15)
-  .text(durationActions.DURATION30)
-  .text(durationActions.DURATION45)
+export const durationKeyboard = (ctx: BotContext) =>
+  ctx.reply(durationActions.MESSAGE, {
+    reply_markup: {
+      resize_keyboard: true,
+      one_time_keyboard: true,
+      keyboard: new Keyboard()
+        .add(
+          durationActions.DURATION15,
+          durationActions.DURATION30,
+          durationActions.DURATION45
+        )
+        .build()
+    }
+  })
 
-export const camerasKeyboard = new Keyboard()
-  .text(camerasActions.CAMERAS1)
-  .text(camerasActions.CAMERAS2)
-  .text(camerasActions.CAMERAS3)
+export const camerasKeyboard = (ctx: BotContext) =>
+  ctx.reply(camerasActions.MESSAGE, {
+    reply_markup: {
+      resize_keyboard: true,
+      one_time_keyboard: true,
+      keyboard: new Keyboard()
+        .add(
+          camerasActions.CAMERAS1,
+          camerasActions.CAMERAS2,
+          camerasActions.CAMERAS3
+        )
+        .build()
+    }
+  })
 
-export const editKeyboard = new Keyboard()
-  .text(editActions.YES)
-  .text(editActions.NO)
+export const editKeyboard = (ctx: BotContext) =>
+  ctx.reply(editActions.MESSAGE, {
+    reply_markup: {
+      resize_keyboard: true,
+      one_time_keyboard: true,
+      keyboard: new Keyboard().add(editActions.YES, editActions.NO).build()
+    }
+  })
 
-export const colorizationKeyboard = new Keyboard()
-  .text(colorizationActions.YES)
-  .text(colorizationActions.NO)
+export const colorizationKeyboard = (ctx: BotContext) =>
+  ctx.reply(colorizationActions.MESSAGE, {
+    reply_markup: {
+      resize_keyboard: true,
+      one_time_keyboard: true,
+      keyboard: new Keyboard()
+        .add(colorizationActions.YES, colorizationActions.NO)
+        .build()
+    }
+  })
 
-export const musicKeyboard = new Keyboard()
-  .text(musicActions.OUR)
-  .text(musicActions.YOURS)
+export const musicKeyboard = (ctx: BotContext) =>
+  ctx.reply(musicActions.MESSAGE, {
+    reply_markup: {
+      resize_keyboard: true,
+      one_time_keyboard: true,
+      keyboard: new Keyboard().add(musicActions.OUR, musicActions.YOURS).build()
+    }
+  })
 
-export const preferencesKeyboard = new Keyboard()
-  .text(preferencesActions.YES)
-  .text(preferencesActions.NO)
+export const preferencesKeyboard = (ctx: BotContext) =>
+  ctx.reply(preferencesActions.MESSAGE, {
+    reply_markup: {
+      resize_keyboard: true,
+      one_time_keyboard: true,
+      keyboard: new Keyboard()
+        .add(preferencesActions.YES, preferencesActions.NO)
+        .build()
+    }
+  })
 
-export const termsOfReferenceKeyboard = new Keyboard()
-  .text(termsOfReferenceActions.YES)
-  .text(termsOfReferenceActions.NO)
+export const termsOfReferenceKeyboard = (ctx: BotContext) =>
+  ctx.reply(termsOfReferenceActions.MESSAGE, {
+    reply_markup: {
+      resize_keyboard: true,
+      one_time_keyboard: true,
+      keyboard: new Keyboard()
+        .add(termsOfReferenceActions.YES, termsOfReferenceActions.NO)
+        .build()
+    }
+  })

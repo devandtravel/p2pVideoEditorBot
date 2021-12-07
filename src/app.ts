@@ -5,13 +5,10 @@ import { mainKeyboard } from './messages/keyboards'
 import { run } from '@grammyjs/runner'
 import { testOrders } from './models/testOrders'
 import { ignoreOldMessageUpdates } from './middlewares/ignoreOldMessageUpdates'
-
-const initialOrders = testOrders
+import { commandsActions, helpActions } from './messages/actions'
 
 async function runApp() {
-  console.log('Starting app...')
-  // const orders = testOrders
-  console.log('Database NOT connected')
+  const initialOrders = testOrders
   // Middlewares
   bot.use(
     session({
@@ -21,36 +18,13 @@ async function runApp() {
     })
   )
   bot.use(ignoreOldMessageUpdates)
-
   // Commands
-  await bot.api.setMyCommands([
-    { command: 'start', description: 'Запустить бота заново' },
-    { command: 'orders', description: '[admin] Показать заказы' },
-    { command: 'help', description: 'Помощь' }
-  ])
-
-  bot.command('start', async ctx => {
-    await ctx.reply(
-      'Привет! Готов помочь тебе с монтажом свадебных фильмов. Ответь на несколько вопросов.',
-      {
-        reply_markup: {
-          resize_keyboard: true,
-          remove_keyboard: true,
-          one_time_keyboard: true,
-          keyboard: mainKeyboard.build()
-        }
-      }
-    )
-  })
-  bot.command('help', ctx => {
-    ctx.reply(
-      'Бот соединит тебя с видеомонтажером и позволит вам вместе создать свадебное видео.'
-    )
-  })
-
-  bot.command('orders', async ctx => {
-    await ctx.reply(`ORDERS \n ${JSON.stringify(ctx.session.orders)}!`)
-  })
+  await bot.api.setMyCommands(commandsActions)
+  bot.command('start', ctx => mainKeyboard(ctx))
+  bot.command('help', ctx => ctx.reply(helpActions.MESSAGE))
+  bot.command('orders', ctx =>
+    ctx.reply(`ORDERS \n ${JSON.stringify(ctx.session.orders)}!`)
+  )
   // Errors
   bot.catch(console.error)
   // Start bot
