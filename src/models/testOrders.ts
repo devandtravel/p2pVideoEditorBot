@@ -1,61 +1,123 @@
 import { v4 } from 'uuid'
 
-export const testOrders = [
+export interface Order {
+  id: string
+  title: string
+  date: Date
+  weddingDate: string
+  details: string
+  comments: Comments
+  duration: number
+  numberOfCameras: number
+  numberOfDrones: number
+  price: number
+  colorization: boolean
+  edit: boolean
+  termsOfReference: TermsOfReference
+  lut: Lut
+  history: History
+}
+
+export interface Comments {
+  userComments: UserComment[]
+  editorComments: EditorComment[]
+  managerComments: ManagerComment[]
+}
+
+export interface UserComment {
+  date: Date
+  userComment: string
+}
+
+export interface EditorComment {
+  date: Date
+  userComment?: string
+  editorComment?: string
+}
+
+export interface ManagerComment {
+  date: Date
+  managerComment: string
+}
+
+export interface TermsOfReference {
+  userFileName: string
+  storeFileName: string
+  size: number
+  hash: string
+}
+
+export interface Lut {
+  userFileName: string
+  storeFileName: string
+  size: number
+  hash: string
+}
+
+export interface History {
+  start: string
+  acceptionByEditor: string
+  proxySendByEditor: string
+  acceptionByUser: string
+  end: string
+}
+
+export const testOrders: [Order] = [
   {
     id: v4(),
     title: 'default',
-    date: v4(),
+    date: new Date(),
     weddingDate: v4(),
     details:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, distinctio',
     comments: {
       userComments: [
         {
-          date: v4(),
+          date: new Date(),
           userComment:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, distinctio'
         },
         {
-          date: v4(),
+          date: new Date(),
           userComment:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, distinctio'
         },
         {
-          date: v4(),
+          date: new Date(),
           userComment:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, distinctio'
         }
       ],
       editorComments: [
         {
-          date: v4(),
+          date: new Date(),
           userComment:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, distinctio'
         },
         {
-          date: v4(),
+          date: new Date(),
           editorComment:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, distinctio'
         },
         {
-          date: v4(),
+          date: new Date(),
           editorComment:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, distinctio'
         }
       ],
       managerComments: [
         {
-          date: v4(),
+          date: new Date(),
           managerComment:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, distinctio'
         },
         {
-          date: v4(),
+          date: new Date(),
           managerComment:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, distinctio'
         },
         {
-          date: v4(),
+          date: new Date(),
           managerComment:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, distinctio'
         }

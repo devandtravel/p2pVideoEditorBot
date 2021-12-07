@@ -2,10 +2,22 @@
 # yarn lockfile v1
 
 
-"@grammyjs/types@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@grammyjs/types/-/types-2.3.1.tgz#49c1cae92945f6d5c626acaff495c21dd46eb5ea"
-  integrity sha512-dssC2bf2WgwVAf6UOhv54cPDisnhQRGtk94I7l6JPSfD44IB1rzFEm+CrS2omVbNWU9SZkID0E8C83WEwD0cew==
+"@grammyjs/menu@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@grammyjs/menu/-/menu-1.0.4.tgz#7667642e462d374e55ea8b623cb3c39f0ace6aec"
+  integrity sha512-olBm2KtX54xiYn9IPgAITCxubgR7+4SC0FvvXfrLzXToBNX/06dAIoC7Gzp60UBXPTKsCfLzTwDLisa1aq4pQg==
+
+"@grammyjs/runner@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@grammyjs/runner/-/runner-1.0.3.tgz#4f2d344774b3fc531a7c64ee97114da3faf342f3"
+  integrity sha512-XFDnLDJbJdCcyj9UDvJ3zUvJD416t+zwx9uKKuDVvWVc819RVA6D6UuinxCIFZxVkr1YL9gPh/dm6MUeyjkqzw==
+  dependencies:
+    abort-controller "^3.0.0"
+
+"@grammyjs/types@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@grammyjs/types/-/types-2.4.0.tgz#836f5c4b20b65636d243dabfb772ab781f9db49b"
+  integrity sha512-E8hEYwc+TALItWqJBNVvFcTzLnzY12+G+yWgRhRu0FOYtdtaHSWi580fkibDvYhniY1I7URpwXKZp7haVmhgAA==
 
 "@types/uuid@^8.3.3":
   version "8.3.3"
@@ -73,12 +85,12 @@ from@~0:
   resolved "https://registry.yarnpkg.com/from/-/from-0.1.7.tgz#83c60afc58b9c56997007ed1a768b3ab303a44fe"
   integrity sha1-g8YK/Fi5xWmXAH7Rp2izqzA6RP4=
 
-grammy@^1.4.3:
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/grammy/-/grammy-1.4.3.tgz#661896f4fe76282ce76e2eafaeb8860c8ee3dfb5"
-  integrity sha512-xG3NpM6/VkrlswPHXzghsHrvOHFppngeI0U82UlQj1ERDwdosBZt+yec09hUrnmPJMGBVuYCbA97CmciGuAJPw==
+grammy@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/grammy/-/grammy-1.5.0.tgz#8fb4914b2135ffd03cd564fe05c29052b4c348ab"
+  integrity sha512-svak7xcWz0mybH6NdFUBF/19bl0040BNkbHykdI3ZLzTn1fqVX5TFX2Al5qmVL4azRsMqbhPm5ZzfhTqDCYHwA==
   dependencies:
-    "@grammyjs/types" "^2.3.1"
+    "@grammyjs/types" "^2.4.0"
     abort-controller "^3.0.0"
     debug "^4.3.3"
     node-fetch "^2.6.5"
@@ -167,6 +179,11 @@ strip-ansi@^6.0.0:
   dependencies:
     ansi-regex "^5.0.1"
 
+telegraf-middleware-console-time@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/telegraf-middleware-console-time/-/telegraf-middleware-console-time-2.1.0.tgz#9f3ddcfc1117d783e33fc44e07088d78e9b74288"
+  integrity sha512-qHe5MlSPy6+v2OJ01M0breFDdPhXpCyYvUuGNyDfYrDssDFauAbl7pQAXFGqTQYtKerZsJEyueiHGQisfT1P7Q==
+
 through@2, through@~2.3, through@~2.3.1:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
@@ -188,10 +205,10 @@ tsc-watch@^4.5.0:
     string-argv "^0.1.1"
     strip-ansi "^6.0.0"
 
-typescript@^4.6.0-dev.20211201:
-  version "4.6.0-dev.20211201"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.0-dev.20211201.tgz#0e4395a826d07961c67fab640a689eaa569383a6"
-  integrity sha512-1anRo+AvSLTTVnhHgo4USDowZTpv7//Yek1W0ADf9jLZeNqNIOzCjI2eBoNNAZ327cuikwWuo+u8cDO+9VEYmA==
+typescript@^4.6.0-dev.20211207:
+  version "4.6.0-dev.20211207"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.0-dev.20211207.tgz#0ab38bfb45bac92403693fb22746c5e1d30a6b70"
+  integrity sha512-YiAu2D64LUboL61keXJWJy1qOmACe8mrn/S5bu2tgjRIOSfQd3VInYcotY6WUt3p4JId2wN7onQAFwgKl9/oYw==
 
 uuid@^8.3.2:
   version "8.3.2"
