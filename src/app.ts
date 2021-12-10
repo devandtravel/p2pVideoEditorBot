@@ -1,11 +1,13 @@
 import { session } from 'grammy'
 import { bot } from './init/bot'
 import { SessionData } from './models/Context'
-import { mainKeyboard } from './messages/keyboards'
 import { run } from '@grammyjs/runner'
 import { testOrders } from './models/testOrders'
 import { ignoreOldMessageUpdates } from './middlewares/ignoreOldMessageUpdates'
-import { commandsActions, helpActions } from './messages/actions'
+import { setBotCommands } from './commands/commands'
+import { mainKeyboardActions } from './keyboards/keyboardActions'
+import { mainKeyboardReplies } from './keyboards/keyboardReplies'
+import { showOrders } from './views/showOrders'
 
 async function runApp() {
   const initialOrders = testOrders
@@ -19,12 +21,18 @@ async function runApp() {
   )
   bot.use(ignoreOldMessageUpdates)
   // Commands
-  await bot.api.setMyCommands(commandsActions)
-  bot.command('start', ctx => mainKeyboard(ctx))
-  bot.command('help', ctx => ctx.reply(helpActions.MESSAGE))
-  bot.command('orders', ctx =>
-    ctx.reply(`ORDERS \n ${JSON.stringify(ctx.session.orders)}!`)
+  await setBotCommands()
+  // Hears
+  bot.hears(mainKeyboardActions.CUSTUMER_ORDERS, ctx => showOrders(ctx))
+  bot.hears(mainKeyboardActions.RULES, ctx =>
+    ctx.reply(mainKeyboardReplies.RULES)
   )
+  bot.hears(mainKeyboardActions.HELP, ctx =>
+    ctx.reply(mainKeyboardReplies.HELP)
+  )
+
+  bot.hears(mainKeyboardActions.CREATE_ORDER, ctx => '')
+
   // Errors
   bot.catch(console.error)
   // Start bot

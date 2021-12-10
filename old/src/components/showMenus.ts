@@ -19,8 +19,8 @@ export const showMainMenu = () =>
         mainMenuActions.CREATE_ORDER
       ),
       Markup.button.callback(
-        mainMenuActions.MY_ORDERS,
-        mainMenuActions.MY_ORDERS
+        mainMenuActions.CUSTUMER_ORDERS,
+        mainMenuActions.CUSTUMER_ORDERS
       )
     ],
     [
