@@ -1,7 +1,7 @@
 import { Context, SessionFlavor } from 'grammy'
-import { Order } from '../types/Order'
+import { Orders } from '../types/Orders'
 
 export interface SessionData {
-  orders: Order[]
+  orders: Orders
 }
 export type BotContext = Context & SessionFlavor<SessionData>

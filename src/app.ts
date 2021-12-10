@@ -23,6 +23,7 @@ async function runApp() {
   // Commands
   await setBotCommands()
   // Hears
+
   bot.hears(mainKeyboardActions.CUSTUMER_ORDERS, ctx => showOrders(ctx))
   bot.hears(mainKeyboardActions.RULES, ctx =>
     ctx.reply(mainKeyboardReplies.RULES)

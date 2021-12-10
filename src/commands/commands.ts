@@ -10,6 +10,18 @@ export const setBotCommands = async () => {
   ]
 
   await bot.api.setMyCommands(commands)
-  bot.command('start', (ctx: BotContext) => mainKeyboard(ctx))
+  bot.command('start', (ctx: BotContext) => {
+    const userId = ctx.from?.id
+    const from = ctx.from
+    if (userId !== undefined && userId in Object.keys(ctx.session.orders)) {
+      console.log('TODO: add last login date')
+    } else if (userId && from !== undefined) {
+      ctx.session.orders[userId] = { user: ctx.from, orders: [] }
+      console.log(ctx.session.orders)
+    }
+
+    mainKeyboard(ctx)
+  })
+  // bot.command('start', (ctx: BotContext) => ctx.session.orders ctx.from)
   bot.command('help', (ctx: BotContext) => ctx.reply(mainKeyboardReplies.HELP))
 }
