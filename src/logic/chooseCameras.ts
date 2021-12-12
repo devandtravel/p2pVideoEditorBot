@@ -1,6 +1,6 @@
 import { BotContext } from '../models/Context'
 import { chooseKeyboardReplies, prices } from '../keyboards/keyboardReplies'
-import { editKeyboard } from '../keyboards/keyboards'
+import { startEditKeyboard } from '../keyboards/keyboards'
 import { camerasKeyboardActions } from '../keyboards/keyboardActions'
 
 export const chooseCameras = async (ctx: BotContext, orderId: string, cameras: number) => {
@@ -60,6 +60,6 @@ export const chooseCameras = async (ctx: BotContext, orderId: string, cameras: n
       default:
         break
     }
-    editKeyboard(ctx)
+    startEditKeyboard(ctx)
   } else ctx.reply(chooseKeyboardReplies.exeptions.UNKNOWN_EXEPTION)
 }

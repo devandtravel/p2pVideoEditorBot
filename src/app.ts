@@ -2,11 +2,12 @@ import { session } from 'grammy'
 import { bot } from './init/bot'
 import { SessionData } from './models/Context'
 import { run } from '@grammyjs/runner'
-import { testOrders } from './models/testOrders'
+// import { testOrders } from './models/testOrders'
 import { ignoreOldMessageUpdates } from './middlewares/ignoreOldMessageUpdates'
 import { setBotCommands } from './commands/commands'
 import {
   camerasKeyboardActions,
+  colorizationKeyboardActions,
   durationKeyboardActions,
   mainKeyboardActions,
   startEditKeyboardActions
@@ -18,10 +19,12 @@ import { showHelp } from './logic/showHelp'
 import { chooseDuration } from './logic/chooseDuration'
 import { chooseCameras } from './logic/chooseCameras'
 import { chooseStartEdit } from './logic/chooseStartEdit'
+import { chooseColorization } from './logic/chooseColorization'
 
 async function runApp() {
   let orderId: string = ''
-  const initialOrders = testOrders
+  // const initialOrders = testOrders
+  const initialOrders = {}
   // Middlewares
   bot.use(
     session({
@@ -52,9 +55,9 @@ async function runApp() {
   // Hears startEditKeyboardActions
   bot.hears(startEditKeyboardActions.YES, ctx => chooseStartEdit(ctx, orderId, true))
   bot.hears(startEditKeyboardActions.NO, ctx => chooseStartEdit(ctx, orderId, false))
-  // Hears startEditKeyboardActions
-  bot.hears(startEditKeyboardActions.YES, ctx => chooseStartEdit(ctx, orderId, true))
-  bot.hears(startEditKeyboardActions.NO, ctx => chooseStartEdit(ctx, orderId, false))
+  // Hears colorizationKeyboardActions
+  bot.hears(colorizationKeyboardActions.YES, ctx => chooseColorization(ctx, orderId, true))
+  bot.hears(colorizationKeyboardActions.NO, ctx => chooseColorization(ctx, orderId, false))
   // Errors
   bot.catch(console.error)
   // Start bot

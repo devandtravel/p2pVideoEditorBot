@@ -12,6 +12,9 @@
 /build
 
 # misc
+p2pVideoEditorBot.code-workspace
+/old
+/output
 script.md
 .env
 .DS_Store

@@ -2,7 +2,6 @@ import { BotContext } from '../models/Context'
 import { v4 } from 'uuid'
 import { mainKeyboardReplies } from '../keyboards/keyboardReplies'
 import { durationKeyboard } from '../keyboards/keyboards'
-import { showAllOrders } from './showAllOrders'
 
 export const createOrder = async (ctx: BotContext) => {
   await ctx.reply(mainKeyboardReplies.CREATE_ORDER)
@@ -14,8 +13,9 @@ export const createOrder = async (ctx: BotContext) => {
       ctx.session.orders[userId] = { user: from, orders: {} }
     }
     const orderId = v4()
+    await ctx.reply('TODO: add today date of order, add wedding date')
     ctx.session.orders[userId].orders[orderId] = {
-      title: 'Название заказа',
+      title: `${ctx.from?.first_name} ${ctx.from?.last_name} ${userId.toString()}`,
       date: new Date(),
       weddingDate: new Date(),
       details: 'Детали заказа',
@@ -28,7 +28,7 @@ export const createOrder = async (ctx: BotContext) => {
       startEdit: false,
       editPreferences: ''
     }
-    ctx.reply('TODO: Черновик заказа создан')
+    await ctx.reply('TODO: empty order created')
     durationKeyboard(ctx)
     return orderId
   } else {

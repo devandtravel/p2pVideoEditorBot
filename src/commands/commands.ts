@@ -13,14 +13,17 @@ export const setBotCommands = async () => {
   ]
 
   await bot.api.setMyCommands(commands)
-  bot.command('start', ctx => {
+  bot.command('start', async ctx => {
     const userId = ctx.from?.id
     const from = ctx.from
+    await ctx.reply(
+      'ATTENTION! You are using the Bot in developer mode.\nMessages with "TODO:" label will be deleted in production mode.'
+    )
     if (userId !== undefined && ctx.session.orders.hasOwnProperty(userId)) {
-      console.log('TODO: add last login date and display your last login date in bot')
-      ctx.reply('Ты есть в базе пользователей, можешь создавать заказ')
+      await ctx.reply('TODO: add last login date and display your last login date in bot')
+      await ctx.reply('TODO: you are already logged in, please go ahead')
     } else if (userId !== undefined && from !== undefined) {
-      ctx.reply('Тебя нет в базе пользователей, добавляю')
+      await ctx.reply('TODO: you are not in the user base, I just added you now')
       ctx.session.orders[userId] = { user: from, orders: {} }
     }
     mainKeyboard(ctx)
