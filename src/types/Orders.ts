@@ -1,38 +1,32 @@
 import { User } from '@grammyjs/types'
 
 export interface Orders {
-  [userId: number]: {
+  [userId: string]: {
     user: User
-    orders: UserOrder[]
+    orders: {
+      [orderId: string]: UserOrder
+    }
   }
 }
 
 export interface UserOrder {
-  id: string
   title: string
   date: Date
   weddingDate: Date
   details: string
-  comments: Comments
+  comments?: Comments
   duration: number
   numberOfCameras: number
   numberOfDrones: number
   price: number
+  startEdit: boolean
+  editPreferences?: string
+  music: boolean
   colorization: boolean
-  edit: boolean
-  termsOfReference: TermsOfReference
-  lut: Lut
-  history: History
+  termsOfReference?: TermsOfReference
+  lut?: Lut
+  history?: History
 }
-
-// export interface User {
-//   id: number
-//   is_bot: boolean
-//   first_name: string
-//   last_name: string
-//   username: string
-//   language_code: string
-// }
 
 export interface Comments {
   userComments: UserComment[]

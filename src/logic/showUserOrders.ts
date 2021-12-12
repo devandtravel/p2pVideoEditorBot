@@ -1,18 +1,22 @@
 import { BotContext } from '../models/Context'
 import { showDate } from '../utils/showDate'
 
-export const showOrders = (ctx: BotContext) => {
-  const userId: number | undefined = ctx.from?.id
-  if (userId !== undefined && userId in Object.keys(ctx.session.orders)) {
+export const showUserOrders = (ctx: BotContext) => {
+  const userId = ctx.from?.id
+  if (
+    userId !== undefined &&
+    ctx.session.orders.hasOwnProperty(userId) &&
+    Object.keys(ctx.session.orders[userId].orders).length
+  ) {
     ctx.reply(
       'Твои заказы \n\n' +
-        ctx.session.orders[userId].orders
+        Object.entries(ctx.session.orders[userId].orders)
           .map(
-            order =>
+            ([orderId, order]) =>
               'название заказа: ' +
               order.title +
               '\nномер заказа: ' +
-              order.id +
+              orderId +
               '\nдата заказа: ' +
               showDate(order.date) +
               '\nдата свадьбы: ' +

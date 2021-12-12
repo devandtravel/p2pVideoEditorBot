@@ -1,6 +1,5 @@
 import { Keyboard } from 'grammy'
 import { BotContext } from '../models/Context'
-
 import {
   mainKeyboardActions,
   durationKeyboardActions,
@@ -16,7 +15,6 @@ export const mainKeyboard = (ctx: BotContext) =>
   ctx.reply(mainKeyboardActions.MESSAGE, {
     reply_markup: {
       resize_keyboard: true,
-      one_time_keyboard: true,
       keyboard: new Keyboard()
         .add(
           mainKeyboardActions.CREATE_ORDER,
@@ -32,7 +30,6 @@ export const durationKeyboard = (ctx: BotContext) =>
   ctx.reply(durationKeyboardActions.MESSAGE, {
     reply_markup: {
       resize_keyboard: true,
-      one_time_keyboard: true,
       keyboard: new Keyboard()
         .add(
           durationKeyboardActions.DURATION15,
@@ -47,7 +44,6 @@ export const camerasKeyboard = (ctx: BotContext) =>
   ctx.reply(camerasKeyboardActions.MESSAGE, {
     reply_markup: {
       resize_keyboard: true,
-      one_time_keyboard: true,
       keyboard: new Keyboard()
         .add(
           camerasKeyboardActions.CAMERAS1,
@@ -62,7 +58,6 @@ export const editKeyboard = (ctx: BotContext) =>
   ctx.reply(startEditKeyboardActions.MESSAGE, {
     reply_markup: {
       resize_keyboard: true,
-      one_time_keyboard: true,
       keyboard: new Keyboard()
         .add(startEditKeyboardActions.YES, startEditKeyboardActions.NO)
         .build()
@@ -73,7 +68,6 @@ export const colorizationKeyboard = (ctx: BotContext) =>
   ctx.reply(colorizationKeyboardActions.MESSAGE, {
     reply_markup: {
       resize_keyboard: true,
-      one_time_keyboard: true,
       keyboard: new Keyboard()
         .add(colorizationKeyboardActions.YES, colorizationKeyboardActions.NO)
         .build()
@@ -84,7 +78,6 @@ export const musicKeyboard = (ctx: BotContext) =>
   ctx.reply(musicKeyboardActions.MESSAGE, {
     reply_markup: {
       resize_keyboard: true,
-      one_time_keyboard: true,
       keyboard: new Keyboard()
         .add(musicKeyboardActions.OUR, musicKeyboardActions.YOURS)
         .build()
@@ -95,7 +88,6 @@ export const preferencesKeyboard = (ctx: BotContext) =>
   ctx.reply(editPreferencesKeyboardActions.MESSAGE, {
     reply_markup: {
       resize_keyboard: true,
-      one_time_keyboard: true,
       keyboard: new Keyboard()
         .add(
           editPreferencesKeyboardActions.YES,
@@ -109,7 +101,6 @@ export const termsOfReferenceKeyboard = (ctx: BotContext) =>
   ctx.reply(termsOfReferenceKeyboardActions.MESSAGE, {
     reply_markup: {
       resize_keyboard: true,
-      one_time_keyboard: true,
       keyboard: new Keyboard()
         .add(
           termsOfReferenceKeyboardActions.YES,

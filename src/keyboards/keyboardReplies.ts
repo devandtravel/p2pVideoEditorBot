@@ -1,16 +1,27 @@
 export const mainKeyboardReplies = {
+  CREATE_ORDER: 'Начинаем создавать заказ',
   HELP: 'Бот соединит тебя с видеомонтажером и позволит вам вместе создать свадебное видео.',
   RULES:
     'Правила \n\n' +
-    'Ответь на несколько вопросов и бот соединит тебя с видеомонтажером и позволит вам вместе создать свадебное видео.'
+    'Ответь на несколько вопросов и бот соединит тебя с видеомонтажером и позволит вам вместе создать свадебное видео.',
+  exeptions: {
+    USER_NOT_FOUND: 'Тебя нет в базе пользователей, добавляю',
+    UNKNOWN_EXEPTION: 'Не получается создать заказ'
+  }
+}
+export const chooseKeyboardReplies = {
+  CHOOSE: 'Твой выбор: ',
+  exeptions: {
+    UNKNOWN_EXEPTION: 'Неизвестная ошибка, начни сначала, нажав /start'
+  }
 }
 
 // miscellaneous
 
 export const successActions = {
-  MESSAGE: `Cпасибо за заказ. Примерное дата выполнения ${new Date(
-    Date.UTC(2021, 12, 2, 10, 0, 0)
-  ).toLocaleString('ru-RU')}`
+  MESSAGE: `Cпасибо за заказ. Примерное дата выполнения ${new Date(Date.UTC(2021, 12, 2, 10, 0, 0)).toLocaleString(
+    'ru-RU'
+  )}`
 }
 
 export const prices = {
