@@ -18,6 +18,7 @@ export interface UserOrder {
   duration: number
   numberOfCameras: number
   numberOfDrones: number
+  prepayment: number
   price: number
   startEdit: boolean
   editPreferences?: string

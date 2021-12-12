@@ -24,15 +24,15 @@ export const successActions = {
   )}`
 }
 
-export const prices = {
+export const prepayments = {
   MESSAGE: '',
-  PRICE_DURATION15_CAMERAS1: 'Необходима предоплата 10000 рублей',
-  PRICE_DURATION30_CAMERAS1: 'Необходима предоплата 20000 рублей',
-  PRICE_DURATION45_CAMERAS1: 'Необходима предоплата 30000 рублей',
-  PRICE_DURATION15_CAMERAS2: 'Необходима предоплата 15000 рублей',
-  PRICE_DURATION30_CAMERAS2: 'Необходима предоплата 25000 рублей',
-  PRICE_DURATION45_CAMERAS2: 'Необходима предоплата 35000 рублей',
-  PRICE_DURATION15_CAMERAS3: 'Необходима предоплата 18000 рублей',
-  PRICE_DURATION30_CAMERAS3: 'Необходима предоплата 28000 рублей',
-  PRICE_DURATION45_CAMERAS3: 'Необходима предоплата 38000 рублей'
+  PREPAYMENT_DURATION15_CAMERAS1: 'Необходима предоплата 10000 рублей',
+  PREPAYMENT_DURATION30_CAMERAS1: 'Необходима предоплата 20000 рублей',
+  PREPAYMENT_DURATION45_CAMERAS1: 'Необходима предоплата 30000 рублей',
+  PREPAYMENT_DURATION15_CAMERAS2: 'Необходима предоплата 15000 рублей',
+  PREPAYMENT_DURATION30_CAMERAS2: 'Необходима предоплата 25000 рублей',
+  PREPAYMENT_DURATION45_CAMERAS2: 'Необходима предоплата 35000 рублей',
+  PREPAYMENT_DURATION15_CAMERAS3: 'Необходима предоплата 18000 рублей',
+  PREPAYMENT_DURATION30_CAMERAS3: 'Необходима предоплата 28000 рублей',
+  PREPAYMENT_DURATION45_CAMERAS3: 'Необходима предоплата 38000 рублей'
 }

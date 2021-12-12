@@ -19,6 +19,7 @@ export const setBotCommands = async () => {
     await ctx.reply(
       'ATTENTION! You are using the Bot in developer mode.\nMessages with "TODO:" label will be deleted in production mode.'
     )
+    await ctx.reply('TODO: 1. Ask for wedding date. How to get this? Add datepicker for wedding date')
     if (userId !== undefined && ctx.session.orders.hasOwnProperty(userId)) {
       await ctx.reply('TODO: add last login date and display your last login date in bot')
       await ctx.reply('TODO: you are already logged in, please go ahead')

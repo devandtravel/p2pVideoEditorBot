@@ -12,8 +12,7 @@
 /build
 
 # misc
-p2pVideoEditorBot.code-workspace
-/old
+/.VSCodeCounter
 /output
 script.md
 .env

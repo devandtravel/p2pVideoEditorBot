@@ -1,5 +1,5 @@
 import { BotContext } from '../models/Context'
-import { chooseKeyboardReplies, prices } from '../keyboards/keyboardReplies'
+import { chooseKeyboardReplies, prepayments } from '../keyboards/keyboardReplies'
 import { startEditKeyboard } from '../keyboards/keyboards'
 import { camerasKeyboardActions } from '../keyboards/keyboardActions'
 
@@ -8,18 +8,23 @@ export const chooseCameras = async (ctx: BotContext, orderId: string, cameras: n
   if (userId !== undefined && orderId !== '') {
     ctx.session.orders[userId].orders[orderId].numberOfCameras = cameras
     ctx.session.orders[userId].orders[orderId].numberOfDrones = 1
+    const prepaymentRegExp = /\d+/
+    let prepayment = '0'
     switch (cameras) {
       case 1:
         await ctx.reply(`${chooseKeyboardReplies.CHOOSE}${camerasKeyboardActions.CAMERAS1}`)
         switch (ctx.session.orders[userId].orders[orderId].duration) {
           case 15:
-            await ctx.reply(prices.PRICE_DURATION15_CAMERAS1)
+            prepayment = prepayments.PREPAYMENT_DURATION15_CAMERAS1
+            await ctx.reply(prepayments.PREPAYMENT_DURATION15_CAMERAS1)
             break
           case 30:
-            await ctx.reply(prices.PRICE_DURATION30_CAMERAS1)
+            prepayment = prepayments.PREPAYMENT_DURATION30_CAMERAS1
+            await ctx.reply(prepayments.PREPAYMENT_DURATION30_CAMERAS1)
             break
           case 45:
-            await ctx.reply(prices.PRICE_DURATION45_CAMERAS1)
+            prepayment = prepayments.PREPAYMENT_DURATION45_CAMERAS1
+            await ctx.reply(prepayments.PREPAYMENT_DURATION45_CAMERAS1)
             break
           default:
             break
@@ -29,13 +34,16 @@ export const chooseCameras = async (ctx: BotContext, orderId: string, cameras: n
         await ctx.reply(`${chooseKeyboardReplies.CHOOSE}${camerasKeyboardActions.CAMERAS2}`)
         switch (ctx.session.orders[userId].orders[orderId].duration) {
           case 15:
-            await ctx.reply(prices.PRICE_DURATION15_CAMERAS2)
+            prepayment = prepayments.PREPAYMENT_DURATION15_CAMERAS2
+            await ctx.reply(prepayments.PREPAYMENT_DURATION15_CAMERAS2)
             break
           case 30:
-            await ctx.reply(prices.PRICE_DURATION30_CAMERAS2)
+            prepayment = prepayments.PREPAYMENT_DURATION30_CAMERAS2
+            await ctx.reply(prepayments.PREPAYMENT_DURATION30_CAMERAS2)
             break
           case 45:
-            await ctx.reply(prices.PRICE_DURATION45_CAMERAS2)
+            prepayment = prepayments.PREPAYMENT_DURATION45_CAMERAS2
+            await ctx.reply(prepayments.PREPAYMENT_DURATION45_CAMERAS2)
             break
           default:
             break
@@ -45,13 +53,16 @@ export const chooseCameras = async (ctx: BotContext, orderId: string, cameras: n
         await ctx.reply(`${chooseKeyboardReplies.CHOOSE}${camerasKeyboardActions.CAMERAS3}`)
         switch (ctx.session.orders[userId].orders[orderId].duration) {
           case 15:
-            await ctx.reply(prices.PRICE_DURATION15_CAMERAS3)
+            prepayment = prepayments.PREPAYMENT_DURATION15_CAMERAS3
+            await ctx.reply(prepayments.PREPAYMENT_DURATION15_CAMERAS3)
             break
           case 30:
-            await ctx.reply(prices.PRICE_DURATION30_CAMERAS3)
+            prepayment = prepayments.PREPAYMENT_DURATION30_CAMERAS3
+            await ctx.reply(prepayments.PREPAYMENT_DURATION30_CAMERAS3)
             break
           case 45:
-            await ctx.reply(prices.PRICE_DURATION45_CAMERAS3)
+            prepayment = prepayments.PREPAYMENT_DURATION45_CAMERAS3
+            await ctx.reply(prepayments.PREPAYMENT_DURATION45_CAMERAS3)
             break
           default:
             break
@@ -60,6 +71,7 @@ export const chooseCameras = async (ctx: BotContext, orderId: string, cameras: n
       default:
         break
     }
+    ctx.session.orders[userId].orders[orderId].prepayment = Number(prepayment.match(prepaymentRegExp))
     startEditKeyboard(ctx)
   } else ctx.reply(chooseKeyboardReplies.exeptions.UNKNOWN_EXEPTION)
 }

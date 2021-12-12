@@ -10,6 +10,7 @@ import {
   colorizationKeyboardActions,
   durationKeyboardActions,
   mainKeyboardActions,
+  musicKeyboardActions,
   startEditKeyboardActions
 } from './keyboards/keyboardActions'
 import { createOrder } from './logic/createOrder'
@@ -20,6 +21,7 @@ import { chooseDuration } from './logic/chooseDuration'
 import { chooseCameras } from './logic/chooseCameras'
 import { chooseStartEdit } from './logic/chooseStartEdit'
 import { chooseColorization } from './logic/chooseColorization'
+import { chooseMusic } from './logic/chooseMusic'
 
 async function runApp() {
   let orderId: string = ''
@@ -58,6 +60,9 @@ async function runApp() {
   // Hears colorizationKeyboardActions
   bot.hears(colorizationKeyboardActions.YES, ctx => chooseColorization(ctx, orderId, true))
   bot.hears(colorizationKeyboardActions.NO, ctx => chooseColorization(ctx, orderId, false))
+  // Hears musicKeyboardActions
+  bot.hears(musicKeyboardActions.YOURS, ctx => chooseMusic(ctx, orderId, true))
+  bot.hears(musicKeyboardActions.OUR, ctx => chooseMusic(ctx, orderId, false))
   // Errors
   bot.catch(console.error)
   // Start bot

@@ -1,5 +1,5 @@
 import { BotContext } from '../models/Context'
-import { chooseKeyboardReplies, prices } from '../keyboards/keyboardReplies'
+import { chooseKeyboardReplies, prepayments } from '../keyboards/keyboardReplies'
 import { colorizationKeyboard, mainKeyboard } from '../keyboards/keyboards'
 import { startEditKeyboardActions } from '../keyboards/keyboardActions'
 

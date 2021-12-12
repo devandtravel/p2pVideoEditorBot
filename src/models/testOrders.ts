@@ -63,7 +63,8 @@ const testUserOrder: UserOrder = {
   duration: 15, // minutes
   numberOfCameras: 1,
   numberOfDrones: 1,
-  price: 30000,
+  prepayment: 30000,
+  price: 60000,
   colorization: true,
   startEdit: true,
   music: true,
