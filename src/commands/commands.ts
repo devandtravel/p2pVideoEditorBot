@@ -17,7 +17,7 @@ export const setBotCommands = async () => {
     const userId = ctx.from?.id
     const from = ctx.from
     await ctx.reply(
-      'ATTENTION! You are using the Bot in developer mode.\nMessages with "TODO:" label will be deleted in production mode.'
+      'ATTENTION! You are using the Bot in developer mode.\nMessages with "TODO:" label will be removed in production mode.'
     )
     await ctx.reply('TODO: 1. Ask for wedding date. How to get this? Add datepicker for wedding date')
     if (userId !== undefined && ctx.session.orders.hasOwnProperty(userId)) {

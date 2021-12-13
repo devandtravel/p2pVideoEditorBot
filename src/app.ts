@@ -9,9 +9,11 @@ import {
   camerasKeyboardActions,
   colorizationKeyboardActions,
   durationKeyboardActions,
+  editPreferencesKeyboardActions,
   mainKeyboardActions,
   musicKeyboardActions,
-  startEditKeyboardActions
+  startEditKeyboardActions,
+  termsOfReferenceKeyboardActions
 } from './keyboards/keyboardActions'
 import { createOrder } from './logic/createOrder'
 import { showUserOrders } from './logic/showUserOrders'
@@ -22,6 +24,8 @@ import { chooseCameras } from './logic/chooseCameras'
 import { chooseStartEdit } from './logic/chooseStartEdit'
 import { chooseColorization } from './logic/chooseColorization'
 import { chooseMusic } from './logic/chooseMusic'
+import { chooseEditPreferences } from './logic/chooseEditPreferences'
+import { chooseTermsOfReference } from './logic/chooseTermsOfReference'
 
 async function runApp() {
   let orderId: string = ''
@@ -63,6 +67,12 @@ async function runApp() {
   // Hears musicKeyboardActions
   bot.hears(musicKeyboardActions.YOURS, ctx => chooseMusic(ctx, orderId, true))
   bot.hears(musicKeyboardActions.OUR, ctx => chooseMusic(ctx, orderId, false))
+  // Hears editPreferencesKeyboardActions
+  bot.hears(editPreferencesKeyboardActions.YES, ctx => chooseEditPreferences(ctx, orderId, true))
+  bot.hears(editPreferencesKeyboardActions.NO, ctx => chooseEditPreferences(ctx, orderId, false))
+  // Hears termsOfReferenceKeyboardActions
+  bot.hears(termsOfReferenceKeyboardActions.YES, ctx => chooseTermsOfReference(ctx, orderId, true))
+  bot.hears(termsOfReferenceKeyboardActions.NO, ctx => chooseTermsOfReference(ctx, orderId, false))
   // Errors
   bot.catch(console.error)
   // Start bot
