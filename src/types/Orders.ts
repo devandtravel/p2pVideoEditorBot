@@ -1,4 +1,5 @@
 import { User } from '@grammyjs/types'
+import { Document } from '@grammyjs/types'
 
 export interface Orders {
   [userId: string]: {
@@ -24,8 +25,9 @@ export interface UserOrder {
   editPreferences?: string
   music: boolean
   colorization: boolean
-  termsOfReference?: TermsOfReference
-  lut?: Lut
+  termsOfReference?: Document
+  lut?: Document
+  musicFile?: Document
   history?: History
 }
 
@@ -49,20 +51,6 @@ export interface EditorComment {
 export interface ManagerComment {
   date: Date
   managerComment: string
-}
-
-export interface TermsOfReference {
-  userFileName: string
-  storeFileName: string
-  size: number
-  hash: string
-}
-
-export interface Lut {
-  userFileName: string
-  storeFileName: string
-  size: number
-  hash: string
 }
 
 export interface History {

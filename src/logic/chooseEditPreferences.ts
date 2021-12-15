@@ -2,6 +2,7 @@ import { BotContext } from '../models/Context'
 import { chooseKeyboardReplies } from '../keyboards/keyboardReplies'
 import { termsOfReferenceKeyboard } from '../keyboards/keyboards'
 import { editPreferencesKeyboardActions } from '../keyboards/keyboardActions'
+import { StatelessQuestion } from '@grammyjs/stateless-question'
 import { bot } from '../init/bot'
 
 export const chooseEditPreferences = async (ctx: BotContext, orderId: string, editPreferences: boolean) => {
@@ -9,20 +10,19 @@ export const chooseEditPreferences = async (ctx: BotContext, orderId: string, ed
   if (userId !== undefined && orderId !== '') {
     switch (editPreferences) {
       case true:
+        const botCtx = ctx
+        const editPreferencesQuestion = new StatelessQuestion('editPreferences', async ctx => {
+          botCtx.session.orders[userId].orders[orderId].editPreferences = ctx.message.text
+          await ctx.reply('Записал твои пожелания')
+          await termsOfReferenceKeyboard(botCtx)
+        })
+        bot.use(editPreferencesQuestion.middleware())
         await ctx.reply(`${chooseKeyboardReplies.CHOOSE}${editPreferencesKeyboardActions.YES}`)
-        await ctx.reply('↓ Введи и отправь мне твой комментарий с предпочтениями по монтажу ↓', {
-          reply_markup: { force_reply: true }
-        })
-        replyOnMessage(ctx, 'action')
-        let isBotOnMsgTextEditPreferences = true
-        bot.on('message:text', async ctx => {
-          if (isBotOnMsgTextEditPreferences) {
-            ctx.session.orders[userId].orders[orderId].editPreferences = ctx.msg.text
-            await ctx.reply('Записал твои пожелания')
-            await termsOfReferenceKeyboard(ctx)
-          }
-          isBotOnMsgTextEditPreferences = false
-        })
+
+        editPreferencesQuestion.replyWithMarkdown(
+          ctx,
+          '↓ Введи и отправь мне твой комментарий с предпочтениями по монтажу ↓'
+        )
         break
       case false:
         await ctx.reply(`${chooseKeyboardReplies.CHOOSE}${editPreferencesKeyboardActions.NO}`)

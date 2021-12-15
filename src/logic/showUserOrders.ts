@@ -41,10 +41,13 @@ export const showUserOrders = (ctx: BotContext) => {
               '\nпредоплата: ' +
               order.prepayment +
               '\nцена: ' +
-              order.price +
+              (order.price ? order.price : 'уточняется') +
               '\nпредпочтения по монтажу: ' +
               (order.editPreferences ? order.editPreferences : editPreferencesKeyboardActions.NO) +
               (order.details ? '\nкраткие детали заказа:\n' + order.details : '') +
+              (order.termsOfReference ? '\nназвание файла с ТЗ: ' + order.termsOfReference.file_name : '') +
+              (order.lut ? '\nназвание файла с LUT: ' + order.lut.file_name : '') +
+              (order.musicFile ? '\nназвание файла с музыкой: ' + order.musicFile.file_name : '') +
               '\n\n'
           )
           .join('')

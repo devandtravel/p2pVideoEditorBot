@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@grammyjs/files@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@grammyjs/files/-/files-1.0.2.tgz#39b6106077df4ad25f07134157e92c34d85d4a8f"
+  integrity sha512-tROxL6mXU+pfnR0EPljYJavkH75di7+fYMbJ3jl13aTgFdjTLTtjhNPHeItsiNdevkdUyVId7XCeIT8XqQWOIg==
+
 "@grammyjs/menu@^1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@grammyjs/menu/-/menu-1.0.4.tgz#7667642e462d374e55ea8b623cb3c39f0ace6aec"
@@ -14,10 +19,18 @@
   dependencies:
     abort-controller "^3.0.0"
 
-"@grammyjs/types@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@grammyjs/types/-/types-2.4.0.tgz#836f5c4b20b65636d243dabfb772ab781f9db49b"
-  integrity sha512-E8hEYwc+TALItWqJBNVvFcTzLnzY12+G+yWgRhRu0FOYtdtaHSWi580fkibDvYhniY1I7URpwXKZp7haVmhgAA==
+"@grammyjs/stateless-question@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@grammyjs/stateless-question/-/stateless-question-3.0.1.tgz#d74cd0b4dc41f2dd2c46a98780b1136eca5031b9"
+  integrity sha512-9S/ff+yPxEEFpFsjiu7UjsOhETt9jruAUNcfzfTJ9FTuyIEjcMpTLT8ncpWyNE2w8tWRTLmOpXHSswPohntH7w==
+  dependencies:
+    "@grammyjs/types" "^2.2.6"
+    telegram-format "^2.0.0"
+
+"@grammyjs/types@^2.2.6", "@grammyjs/types@^2.4.5":
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/@grammyjs/types/-/types-2.4.5.tgz#383b9bacb7313b016d85fd6f473fa224dddee272"
+  integrity sha512-1n7Q+dyNLahYrDIMSTSrCgdN1+NPNbK/dL4mDOEWFinG0cJKeu509uqqHe6CNABOfaKcbujxVEqBL/DufYptOQ==
 
 "@types/uuid@^8.3.3":
   version "8.3.3"
@@ -85,12 +98,12 @@ from@~0:
   resolved "https://registry.yarnpkg.com/from/-/from-0.1.7.tgz#83c60afc58b9c56997007ed1a768b3ab303a44fe"
   integrity sha1-g8YK/Fi5xWmXAH7Rp2izqzA6RP4=
 
-grammy@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/grammy/-/grammy-1.5.0.tgz#8fb4914b2135ffd03cd564fe05c29052b4c348ab"
-  integrity sha512-svak7xcWz0mybH6NdFUBF/19bl0040BNkbHykdI3ZLzTn1fqVX5TFX2Al5qmVL4azRsMqbhPm5ZzfhTqDCYHwA==
+grammy@^1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/grammy/-/grammy-1.5.3.tgz#0a3e6f0959736d15c856acf87575082fa3f62991"
+  integrity sha512-QHKhyzNpBAy/d75R0zOgVAfxKhok3YhJbzm1s8n2wtT8CvV43SBF++a9SdOM0dx73rMT9dncSeATy6Jp5fVKnw==
   dependencies:
-    "@grammyjs/types" "^2.4.0"
+    "@grammyjs/types" "^2.4.5"
     abort-controller "^3.0.0"
     debug "^4.3.3"
     node-fetch "^2.6.5"
@@ -184,6 +197,11 @@ telegraf-middleware-console-time@^2.1.0:
   resolved "https://registry.yarnpkg.com/telegraf-middleware-console-time/-/telegraf-middleware-console-time-2.1.0.tgz#9f3ddcfc1117d783e33fc44e07088d78e9b74288"
   integrity sha512-qHe5MlSPy6+v2OJ01M0breFDdPhXpCyYvUuGNyDfYrDssDFauAbl7pQAXFGqTQYtKerZsJEyueiHGQisfT1P7Q==
 
+telegram-format@^2.0.0:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/telegram-format/-/telegram-format-2.0.2.tgz#f0ef223f4a81c180f823622499b408c6593a1133"
+  integrity sha512-OE0SHR8pINftjFt01QfHq+Ujedbqna5CInw+PwdbS1/ySrvIBhPZSGo7uas6ktaPv0mnoPKNJR+seouOSXFZiA==
+
 through@2, through@~2.3, through@~2.3.1:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
@@ -205,10 +223,10 @@ tsc-watch@^4.5.0:
     string-argv "^0.1.1"
     strip-ansi "^6.0.0"
 
-typescript@^4.6.0-dev.20211207:
-  version "4.6.0-dev.20211207"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.0-dev.20211207.tgz#0ab38bfb45bac92403693fb22746c5e1d30a6b70"
-  integrity sha512-YiAu2D64LUboL61keXJWJy1qOmACe8mrn/S5bu2tgjRIOSfQd3VInYcotY6WUt3p4JId2wN7onQAFwgKl9/oYw==
+typescript@^4.6.0-dev.20211215:
+  version "4.6.0-dev.20211215"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.0-dev.20211215.tgz#2551fbcf8ca60fec8e9175ce2fe8f76b985bebec"
+  integrity sha512-9RBON97pZEzPN4v26Fr+nMCoosXl/cz6131jJ6fhB2Cd5mD1WtVf7RnfcJEKBksFUPpmwADmw9XqqYFm85h83w==
 
 uuid@^8.3.2:
   version "8.3.2"

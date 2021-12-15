@@ -70,16 +70,18 @@ const testUserOrder: UserOrder = {
   music: true,
   editPreferences: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, distinctio',
   termsOfReference: {
-    userFileName: 'Техническое задание',
-    storeFileName: 'termsOfReference' + v4(),
-    size: 123123123, // bytes
-    hash: v4() // TODO: change to hash function depending of file size and date of file recievement
+    file_name: 'ci.json',
+    mime_type: 'application/json',
+    file_id: 'BQACAgUAAxkBAAINRmG6OetrFj4yCe0vzW8oD_ZJ-JEqAAK0AwACh-LZVSpT70KNMXUXIwQ',
+    file_unique_id: 'AgADtAMAAofi2VU',
+    file_size: 172380
   },
   lut: {
-    userFileName: 'Техническое задание',
-    storeFileName: 'termsOfReference' + v4(),
-    size: 123123123, // bytes
-    hash: v4() // TODO: change to hash function depending of file size and date of file recievement
+    file_name: 'ci.lut',
+    mime_type: 'lut',
+    file_id: 'BQACAgUAAxkBAAsINRmGsgegedgvzW8oD_ZJ-JEqAAK0AwACh-LZVSpT70KNMXUXIwQ',
+    file_unique_id: 'AgADtAMAAofisdfgd',
+    file_size: 11111
   },
   history: {
     start: v4(),

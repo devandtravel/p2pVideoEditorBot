@@ -1,6 +1,6 @@
 import { session } from 'grammy'
 import { bot } from './init/bot'
-import { SessionData } from './models/Context'
+import { BotContext, SessionData } from './models/Context'
 import { run } from '@grammyjs/runner'
 // import { testOrders } from './models/testOrders'
 import { ignoreOldMessageUpdates } from './middlewares/ignoreOldMessageUpdates'
@@ -26,6 +26,8 @@ import { chooseColorization } from './logic/chooseColorization'
 import { chooseMusic } from './logic/chooseMusic'
 import { chooseEditPreferences } from './logic/chooseEditPreferences'
 import { chooseTermsOfReference } from './logic/chooseTermsOfReference'
+import { hydrateFiles } from '@grammyjs/files'
+import { BOT_TOKEN } from './init/env'
 
 async function runApp() {
   let orderId: string = ''
@@ -40,6 +42,10 @@ async function runApp() {
     })
   )
   bot.use(ignoreOldMessageUpdates)
+  if (BOT_TOKEN === undefined) {
+    throw new TypeError('BOT_TOKEN must be provided! BOT_TOKEN is undefined.')
+  }
+  bot.api.config.use(hydrateFiles(BOT_TOKEN))
   // Commands
   await setBotCommands()
   // Hears mainKeyboardActions
