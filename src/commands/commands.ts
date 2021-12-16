@@ -17,12 +17,17 @@ export const setBotCommands = async () => {
     const userId = ctx.from?.id
     const from = ctx.from
     await ctx.reply(
-      'ATTENTION! You are using the Bot in developer mode.\nMessages with "TODO:" label will be removed in production mode.'
+      'ATTENTION! You are using the Bot in developer mode.\n' +
+        'Messages with "TODO:" label will be removed in production mode.\n' +
+        'TODO:\nAdd datepicker for wedding date\n' +
+        'Добавить интеграцию с чатом монтажеров\n' +
+        'Добавить интеграцию с Я.Диск\n'
     )
-    await ctx.reply('TODO: 1. Ask for wedding date. How to get this? Add datepicker for wedding date')
     if (userId !== undefined && ctx.session.orders.hasOwnProperty(userId)) {
-      await ctx.reply('TODO: add last login date and display your last login date in bot')
-      await ctx.reply('TODO: you are already logged in, please go ahead')
+      await ctx.reply(
+        'TODO: add last login date and display your last login date in bot\n' +
+          'TODO: you are already logged in, please go ahead'
+      )
     } else if (userId !== undefined && from !== undefined) {
       await ctx.reply('TODO: you are not in the user base, I just added you now')
       ctx.session.orders[userId] = { user: from, orders: {} }

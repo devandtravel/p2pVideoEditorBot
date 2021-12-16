@@ -14,7 +14,8 @@ const testUser: User = {
 const testUserOrder: UserOrder = {
   title: 'default',
   date: new Date(),
-  weddingDate: new Date(),
+  weddingDate: '11.11.2022',
+  newlyweds: 'A and B',
   details: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, distinctio',
   comments: {
     userComments: [

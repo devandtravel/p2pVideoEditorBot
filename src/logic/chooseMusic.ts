@@ -11,6 +11,7 @@ export const chooseMusic = async (ctx: BotContext, orderId: string, music: boole
     ctx.session.orders[userId].orders[orderId].music = music
     switch (music) {
       case true:
+        await ctx.reply('TODO: вот тут, пришли ссылку на ядиск, и мы сохраним его к себе')
         await ctx.reply(`${chooseKeyboardReplies.CHOOSE}${musicKeyboardActions.YOURS}`)
         const botCtx = ctx
         const musicQuestion = new StatelessQuestion('music', async (ctx: BotContext) => {

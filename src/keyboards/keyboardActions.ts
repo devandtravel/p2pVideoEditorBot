@@ -6,6 +6,12 @@ export const mainKeyboardActions = {
   RULES: 'Правила',
   HELP: 'Помощь'
 }
+export const weddingDateKeyboardActions = {
+  MESSAGE: 'Напиши дату свадьбы'
+}
+export const newlywedsKeyboardActions = {
+  MESSAGE: 'Напиши имена молодоженов'
+}
 export const durationKeyboardActions = {
   MESSAGE: 'Выбери длительность фильма',
   DURATION15: 'до 15 мин.',

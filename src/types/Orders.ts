@@ -13,7 +13,8 @@ export interface Orders {
 export interface UserOrder {
   title: string
   date: Date
-  weddingDate: Date
+  weddingDate: string
+  newlyweds: string
   details: string
   comments?: Comments
   duration: number

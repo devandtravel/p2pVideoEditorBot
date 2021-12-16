@@ -1,7 +1,7 @@
 import { BotContext } from '../models/Context'
 import { v4 } from 'uuid'
 import { mainKeyboardReplies } from '../keyboards/keyboardReplies'
-import { durationKeyboard } from '../keyboards/keyboards'
+import { enterWeddingDate } from './enterWeddingDate'
 
 export const createOrder = async (ctx: BotContext) => {
   await ctx.reply(mainKeyboardReplies.CREATE_ORDER)
@@ -17,7 +17,8 @@ export const createOrder = async (ctx: BotContext) => {
     ctx.session.orders[userId].orders[orderId] = {
       title: `${ctx.from?.first_name} ${ctx.from?.last_name} ${userId.toString()}`,
       date: new Date(),
-      weddingDate: new Date(),
+      weddingDate: '',
+      newlyweds: '',
       details: '',
       duration: 15,
       numberOfCameras: 1,
@@ -30,7 +31,7 @@ export const createOrder = async (ctx: BotContext) => {
       editPreferences: ''
     }
     await ctx.reply('TODO: empty order created')
-    durationKeyboard(ctx)
+    enterWeddingDate(ctx, orderId)
     return orderId
   } else {
     await ctx.reply(mainKeyboardReplies.exeptions.UNKNOWN_EXEPTION)

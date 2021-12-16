@@ -24,8 +24,8 @@ export const showUserOrders = (ctx: BotContext) => {
               order.title +
               '\nдата заказа: ' +
               showDate(order.date) +
-              '\nдата свадьбы: ' +
-              showDate(order.weddingDate) +
+              (order.weddingDate ? '\nдата свадьбы: ' + order.weddingDate : '') +
+              (order.newlyweds ? '\nимена молодоженов: ' + order.newlyweds : '') +
               '\nдлительность видео: ' +
               order.duration +
               '\nколичество камер: ' +
