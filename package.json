@@ -5,7 +5,7 @@
   "main": "bot.js",
   "type": "module",
   "scripts": {
-    "start": "node build/app.js",
+    "start": "node --es-module-specifier-resolution=node build/app.js",
     "clean": "rm -rf ./build/",
     "dev": "npm run clean && DEBUG='grammy*' ./node_modules/.bin/tsc-watch --onSuccess \"node --es-module-specifier-resolution=node build/app.js\""
   },
