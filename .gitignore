@@ -9,10 +9,11 @@
 /coverage
 
 # production
-/build
-/files
+# /build
+# /files
 
 # misc
+video-editor-bot-fa9707e9ad63.json
 /.VSCodeCounter
 /output
 script.md
