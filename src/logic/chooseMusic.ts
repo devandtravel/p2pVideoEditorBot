@@ -13,15 +13,12 @@ export const chooseMusic = async (ctx: BotContext, orderId: string, music: boole
       case true:
         await ctx.reply('TODO: вот тут, пришли ссылку на ядиск, и мы сохраним его к себе')
         await ctx.reply(`${chooseKeyboardReplies.CHOOSE}${musicKeyboardActions.YOURS}`)
-        const botCtx = ctx
         const musicQuestion = new StatelessQuestion('music', async (ctx: BotContext) => {
           if (ctx.message?.document) {
             const file = await ctx.getFile()
             const fileName = ctx.message?.document?.file_name
-            await file.download(
-              `/home/romv2/projects_wsl/telegram/p2pVideoEditorBot/files/${userId}_${orderId}_music_${fileName}`
-            )
-            botCtx.session.orders[userId].orders[orderId].musicFile = ctx.message.document
+            await file.download(`files/${userId}_${orderId}_music_${fileName}`)
+            ctx.session.orders[userId].orders[orderId].musicFile = ctx.message.document
             await ctx.reply('Файл с музыкой получен')
             preferencesKeyboard(ctx)
           } else {

@@ -7,11 +7,10 @@ import { bot } from '../init/bot'
 export const enterNewlyweds = async (ctx: BotContext, orderId: string) => {
   const userId = ctx.from?.id
   if (userId !== undefined && orderId !== '') {
-    const botCtx = ctx
-    const newlywedsQuestion = new StatelessQuestion('newlyweds', async ctx => {
-      ctx.message.text ? (botCtx.session.orders[userId].orders[orderId].newlyweds = ctx.message.text) : null
+    const newlywedsQuestion = new StatelessQuestion('newlyweds', async (ctx: BotContext) => {
+      ctx.message?.text ? (ctx.session.orders[userId].orders[orderId].newlyweds = ctx.message?.text) : null
       await ctx.reply('Записал имена')
-      await durationKeyboard(botCtx)
+      await durationKeyboard(ctx)
     })
     bot.use(newlywedsQuestion.middleware())
     newlywedsQuestion.replyWithMarkdown(ctx, '↓ Введи и отправь мне имена молодоженов ↓')

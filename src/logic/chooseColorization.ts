@@ -16,15 +16,12 @@ export const chooseColorization = async (ctx: BotContext, orderId: string, color
         break
       case false:
         await ctx.reply(`${chooseKeyboardReplies.CHOOSE}${colorizationKeyboardActions.NO}`)
-        const botCtx = ctx
         const colorizationQuestion = new StatelessQuestion('colorization', async (ctx: BotContext) => {
           if (ctx.message?.document) {
             const file = await ctx.getFile()
             const fileName = ctx.message?.document?.file_name
-            await file.download(
-              `/home/romv2/projects_wsl/telegram/p2pVideoEditorBot/files/${userId}_${orderId}_colorization_${fileName}`
-            )
-            botCtx.session.orders[userId].orders[orderId].lut = ctx.message.document
+            await file.download(`files/${userId}_${orderId}_colorization_${fileName}`)
+            ctx.session.orders[userId].orders[orderId].lut = ctx.message.document
             await ctx.reply('Файл с LUT получен')
             musicKeyboard(ctx)
           } else {

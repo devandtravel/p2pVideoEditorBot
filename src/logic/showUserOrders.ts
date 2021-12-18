@@ -4,11 +4,11 @@ import {
   musicKeyboardActions
 } from '../keyboards/keyboardActions'
 import { BotContext } from '../models/Context'
-import { showDate } from '../utils/showDate'
 
 export const showUserOrders = (ctx: BotContext) => {
   const userId = ctx.from?.id
   if (
+    Object.keys(ctx.session.orders).length &&
     userId !== undefined &&
     ctx.session.orders.hasOwnProperty(userId) &&
     Object.keys(ctx.session.orders[userId].orders).length
@@ -23,7 +23,7 @@ export const showUserOrders = (ctx: BotContext) => {
               '\nназвание заказа: ' +
               order.title +
               '\nдата заказа: ' +
-              showDate(order.date) +
+              order.date +
               (order.weddingDate ? '\nдата свадьбы: ' + order.weddingDate : '') +
               (order.newlyweds ? '\nимена молодоженов: ' + order.newlyweds : '') +
               '\nдлительность видео: ' +

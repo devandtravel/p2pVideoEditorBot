@@ -10,15 +10,13 @@ export const chooseEditPreferences = async (ctx: BotContext, orderId: string, ed
   if (userId !== undefined && orderId !== '') {
     switch (editPreferences) {
       case true:
-        const botCtx = ctx
-        const editPreferencesQuestion = new StatelessQuestion('editPreferences', async ctx => {
-          botCtx.session.orders[userId].orders[orderId].editPreferences = ctx.message.text
+        const editPreferencesQuestion = new StatelessQuestion('editPreferences', async (ctx: BotContext) => {
+          ctx.session.orders[userId].orders[orderId].editPreferences = ctx.message?.text
           await ctx.reply('Записал твои пожелания')
-          await termsOfReferenceKeyboard(botCtx)
+          await termsOfReferenceKeyboard(ctx)
         })
         bot.use(editPreferencesQuestion.middleware())
         await ctx.reply(`${chooseKeyboardReplies.CHOOSE}${editPreferencesKeyboardActions.YES}`)
-
         editPreferencesQuestion.replyWithMarkdown(
           ctx,
           '↓ Введи и отправь мне твой комментарий с предпочтениями по монтажу ↓'

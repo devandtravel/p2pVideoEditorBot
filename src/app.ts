@@ -1,8 +1,6 @@
-import { session } from 'grammy'
 import { bot } from './init/bot'
-import { BotContext, SessionData } from './models/Context'
+import { SessionData } from './models/Context'
 import { run } from '@grammyjs/runner'
-// import { testOrders } from './models/testOrders'
 import { ignoreOldMessageUpdates } from './middlewares/ignoreOldMessageUpdates'
 import { setBotCommands } from './commands/commands'
 import {
@@ -27,18 +25,26 @@ import { chooseMusic } from './logic/chooseMusic'
 import { chooseEditPreferences } from './logic/chooseEditPreferences'
 import { chooseTermsOfReference } from './logic/chooseTermsOfReference'
 import { hydrateFiles } from '@grammyjs/files'
-import { BOT_TOKEN } from './init/env'
+import { BOT_TOKEN, PROJECT_ID } from './init/env'
+import { session } from 'grammy'
+import { adapter } from '@grammyjs/storage-firestore'
+import { Firestore } from '@google-cloud/firestore'
 
 async function runApp() {
   let orderId: string = ''
-  // const initialOrders = testOrders
   const initialOrders = {}
+  // Firestore connect
+  const db = new Firestore({
+    projectId: PROJECT_ID,
+    keyFilename: 'files/video-editor-bot-fa9707e9ad63.json'
+  })
   // Middlewares
   bot.use(
     session({
       initial(): SessionData {
         return { orders: initialOrders }
-      }
+      },
+      storage: adapter(db.collection('sessions'))
     })
   )
   bot.use(ignoreOldMessageUpdates)
