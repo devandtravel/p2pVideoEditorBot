@@ -25,7 +25,7 @@ import { chooseMusic } from './logic/chooseMusic'
 import { chooseEditPreferences } from './logic/chooseEditPreferences'
 import { chooseTermsOfReference } from './logic/chooseTermsOfReference'
 import { hydrateFiles } from '@grammyjs/files'
-import { BOT_TOKEN, PROJECT_ID } from './init/env'
+import { BOT_TOKEN, FIREBASE_SERVICE_ACCOUNT_KEY, PROJECT_ID } from './init/env'
 import { session } from 'grammy'
 import { adapter } from '@grammyjs/storage-firestore'
 import { Firestore } from '@google-cloud/firestore'
@@ -33,10 +33,19 @@ import { Firestore } from '@google-cloud/firestore'
 async function runApp() {
   let orderId: string = ''
   const initialOrders = {}
+  if (BOT_TOKEN === undefined) {
+    throw new TypeError('BOT_TOKEN must be provided! BOT_TOKEN is undefined.')
+  }
+  if (FIREBASE_SERVICE_ACCOUNT_KEY === undefined) {
+    throw new TypeError('FIREBASE_SERVICE_ACCOUNT_KEY must be provided! FIREBASE_SERVICE_ACCOUNT_KEY is undefined.')
+  }
   // Firestore connect
   const db = new Firestore({
     projectId: PROJECT_ID,
-    keyFilename: 'files/video-editor-bot-fa9707e9ad63.json'
+    credentials: {
+      client_email: JSON.parse(FIREBASE_SERVICE_ACCOUNT_KEY as string).client_email,
+      private_key: JSON.parse(FIREBASE_SERVICE_ACCOUNT_KEY as string).private_key
+    }
   })
   // Middlewares
   bot.use(
@@ -48,9 +57,6 @@ async function runApp() {
     })
   )
   bot.use(ignoreOldMessageUpdates)
-  if (BOT_TOKEN === undefined) {
-    throw new TypeError('BOT_TOKEN must be provided! BOT_TOKEN is undefined.')
-  }
   bot.api.config.use(hydrateFiles(BOT_TOKEN))
   // Commands
   await setBotCommands()
