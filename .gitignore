@@ -10,8 +10,11 @@
 
 # production
 /build
+/files
 
 # misc
+/.VSCodeCounter
+/output
 script.md
 .env
 .DS_Store
