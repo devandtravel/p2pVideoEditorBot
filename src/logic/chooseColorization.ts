@@ -12,7 +12,7 @@ export const chooseColorization = async (ctx: BotContext, orderId: string, color
     switch (colorization) {
       case true:
         await ctx.reply(`${chooseKeyboardReplies.CHOOSE}${colorizationKeyboardActions.YES}`)
-        musicKeyboard(ctx)
+        await musicKeyboard(ctx)
         break
       case false:
         await ctx.reply(`${chooseKeyboardReplies.CHOOSE}${colorizationKeyboardActions.NO}`)
@@ -23,10 +23,10 @@ export const chooseColorization = async (ctx: BotContext, orderId: string, color
             await file.download(`files/${userId}_${orderId}_colorization_${fileName}`)
             ctx.session.orders[userId].orders[orderId].lut = ctx.message.document
             await ctx.reply('Файл с LUT получен')
-            musicKeyboard(ctx)
+            await musicKeyboard(ctx)
           } else {
             await ctx.reply('Ты передумал отправлять LUT')
-            musicKeyboard(ctx)
+            await musicKeyboard(ctx)
           }
         })
         bot.use(colorizationQuestion.middleware())
