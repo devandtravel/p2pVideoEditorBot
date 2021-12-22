@@ -8,7 +8,7 @@ export const enterWeddingDate = async (ctx: BotContext, orderId: string) => {
   const userId = ctx.from?.id
   if (userId !== undefined && orderId !== '') {
     const weddingDateQuestion = new StatelessQuestion('weddingDate', async (ctx: BotContext) => {
-      ctx.message?.text ? (ctx.session.orders[userId].orders[orderId].weddingDate = ctx.message.text) : null
+      ctx.message?.text ? (ctx.session.orders[userId].orders[orderId].weddingDate = ctx.message?.text) : null
       await ctx.reply('Записал дату')
       await enterNewlyweds(ctx, orderId)
     })

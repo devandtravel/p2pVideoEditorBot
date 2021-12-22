@@ -20,14 +20,14 @@ export const chooseTermsOfReference = async (ctx, orderId, termsOfReference) => 
                         ctx.session.orders[userId].orders[orderId].termsOfReference = ctx.message.document;
                         await ctx.reply('Файл с ТЗ получен');
                         await ctx.reply(successActions.MESSAGE);
-                        saveToDatabase(ctx);
-                        mainKeyboard(ctx);
+                        await saveToDatabase(ctx);
+                        await mainKeyboard(ctx);
                     }
                     else {
                         await ctx.reply('Ты передумал отправлять ТЗ');
                         await ctx.reply(successActions.MESSAGE);
-                        saveToDatabase(ctx);
-                        mainKeyboard(ctx);
+                        await saveToDatabase(ctx);
+                        await mainKeyboard(ctx);
                     }
                 });
                 bot.use(termsOfReferenceQuestion.middleware());
@@ -37,8 +37,8 @@ export const chooseTermsOfReference = async (ctx, orderId, termsOfReference) => 
             case false:
                 await ctx.reply(`${chooseKeyboardReplies.CHOOSE}${termsOfReferenceKeyboardActions.NO}`);
                 await ctx.reply(successActions.MESSAGE);
-                saveToDatabase(ctx);
-                mainKeyboard(ctx);
+                await saveToDatabase(ctx);
+                await mainKeyboard(ctx);
                 break;
             default:
                 break;
