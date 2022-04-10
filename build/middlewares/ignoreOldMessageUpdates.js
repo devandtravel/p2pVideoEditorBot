@@ -1,4 +1,4 @@
-const threshold = 5 * 60; // 5 minutes
+const threshold = 15 * 60; // 5 minutes
 export function ignoreOldMessageUpdates(ctx, next) {
     var _a, _b;
     // Check if context update type is a message

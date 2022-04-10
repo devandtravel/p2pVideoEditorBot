@@ -71,7 +71,7 @@ export const chooseCameras = async (ctx, orderId, cameras) => {
                 break;
         }
         ctx.session.orders[userId].orders[orderId].prepayment = Number(prepayment.match(prepaymentRegExp));
-        startEditKeyboard(ctx);
+        await startEditKeyboard(ctx);
     }
     else
         ctx.reply(chooseKeyboardReplies.exeptions.UNKNOWN_EXEPTION);

@@ -6,7 +6,7 @@ export const chooseDuration = async (ctx, orderId, duration) => {
     if (userId !== undefined && orderId !== '') {
         ctx.session.orders[userId].orders[orderId].duration = duration;
         await ctx.reply(`${chooseKeyboardReplies.CHOOSE}до ${duration} мин.`);
-        camerasKeyboard(ctx);
+        await camerasKeyboard(ctx);
     }
     else
         ctx.reply(chooseKeyboardReplies.exeptions.UNKNOWN_EXEPTION);

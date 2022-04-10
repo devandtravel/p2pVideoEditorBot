@@ -28,7 +28,6 @@ async function runApp() {
     if (FIREBASE_SERVICE_ACCOUNT_KEY === undefined) {
         throw new TypeError('FIREBASE_SERVICE_ACCOUNT_KEY must be provided! FIREBASE_SERVICE_ACCOUNT_KEY is undefined.');
     }
-    // console.log(typeof CLIENT_EMAIL, typeof PRIVATE_KEY)
     // Firestore connect
     const db = new Firestore({
         projectId: PROJECT_ID,

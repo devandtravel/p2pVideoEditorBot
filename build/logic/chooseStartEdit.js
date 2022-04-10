@@ -9,13 +9,13 @@ export const chooseStartEdit = async (ctx, orderId, startEdit) => {
         switch (startEdit) {
             case true:
                 await ctx.reply(`${chooseKeyboardReplies.CHOOSE}${startEditKeyboardActions.YES}`);
-                colorizationKeyboard(ctx);
+                await colorizationKeyboard(ctx);
                 break;
             case false:
                 await ctx.reply(`${chooseKeyboardReplies.CHOOSE}${startEditKeyboardActions.NO}`);
                 ctx.session.orders[userId].orders[orderId].startEdit = startEdit;
                 delete ctx.session.orders[userId].orders[orderId];
-                mainKeyboard(ctx);
+                await mainKeyboard(ctx);
                 break;
             default:
                 break;

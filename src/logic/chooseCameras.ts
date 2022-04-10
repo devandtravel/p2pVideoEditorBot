@@ -72,6 +72,6 @@ export const chooseCameras = async (ctx: BotContext, orderId: string, cameras: n
         break
     }
     ctx.session.orders[userId].orders[orderId].prepayment = Number(prepayment.match(prepaymentRegExp))
-    startEditKeyboard(ctx)
+    await startEditKeyboard(ctx)
   } else ctx.reply(chooseKeyboardReplies.exeptions.UNKNOWN_EXEPTION)
 }

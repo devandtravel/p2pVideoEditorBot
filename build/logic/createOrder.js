@@ -30,7 +30,7 @@ export const createOrder = async (ctx) => {
             editPreferences: ''
         };
         await ctx.reply('TODO: empty order created');
-        enterWeddingDate(ctx, orderId);
+        await enterWeddingDate(ctx, orderId);
         return orderId;
     }
     else {

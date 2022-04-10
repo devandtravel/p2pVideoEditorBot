@@ -31,7 +31,7 @@ export const createOrder = async (ctx: BotContext) => {
       editPreferences: ''
     }
     await ctx.reply('TODO: empty order created')
-    enterWeddingDate(ctx, orderId)
+    await enterWeddingDate(ctx, orderId)
     return orderId
   } else {
     await ctx.reply(mainKeyboardReplies.exeptions.UNKNOWN_EXEPTION)
